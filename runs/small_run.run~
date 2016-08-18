@@ -1,0 +1,27 @@
+mode = parameter_optimization
+dataConfig = boneMarrowGeneExpr
+programConfig = KMeans_Clustering
+qualityMeasures = TransClustFClusteringQualityMeasure
+optimizationCriterion = TransClustFClusteringQualityMeasure
+optimizationIterations = 1000
+optimizationMethod = DivisiveParameterOptimizationMethod
+
+[KMeans_Clustering]
+optimizationParameters = k,nstart
+
+
+[DBSCAN:eps]
+minValue=$(minSimilarity)
+maxValue=$(maxSimilarity)
+
+[DBSCAN:MinPts]
+minValue=1
+maxValue=$(numberOfElements)
+
+[KMeans_Clustering:k]
+minValue=2
+maxValue=5
+
+[KMeans_Clustering:nstart]
+minValue=1
+maxValue=20
